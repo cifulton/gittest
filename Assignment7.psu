@@ -1,0 +1,97 @@
+//C.Fulton - Program is unfinished
+START
+	DECLARATIONS
+		string name
+		num days
+		string code
+		num SIZE = 5
+		Guest guest[SIZE]
+		num x
+		
+		houseKeeping()
+		x = 0;
+		WHILE x < SIZE
+			OUTPUT "Please enter name"
+			INPUT name
+			OUTPUT "Please enter days"
+			INPUT days
+			OUTPUT "Please enter code"
+			INPUT code
+			WHILE ((code <> "A" OR code <> "a")AND (code <> "C" OR code <> "c"))
+				OUTPUT "Invalid code entry, please enter a code that is either 'A' or 'C'"
+				INPUT code
+			ENDWHILE
+			guest[x] = new Guest(name, days, code);
+			
+			OUTPUT guest[x].toString();
+			x++
+		ENDWHILE
+		
+			
+
+	
+
+STOP
+public static void houseKeeping()
+	OUTPUT "Welcome, this program will collect information on 5 guest and give a summary of information"
+RETURN
+
+
+CLASS Guest
+
+	private string name
+	private num days
+	private string code
+	private num bill
+	private num THREE_MEALS_PER_DAY = 169.00;
+	private num BREAKFAST_INCLUDED = 112.00;
+	
+	public Guest(string name, num days, num code)
+		this.name = name
+		this.days = days
+		this.code = code
+		//call or invoke
+		calculateBill(code)
+		
+	RETURN
+		
+	/**public void setName(string name)
+		this.name = name
+	RETURN
+	
+	public void setDays(num days)
+		this.days = days
+	RETURN
+	public void setCode(string code)
+		this.code = code
+		//call or invoke
+		calculateBill(code)
+	RETURN**/
+	
+	public string getName()
+	
+	RETURN name
+	public num getDays()
+	
+	RETURN days
+	public string getCode()
+	
+	RETURN code
+	public num getBill()
+	
+	RETURN bill
+	//Working method 
+	private calculateBill(string aCode)
+		IF aCode == "A" OR aCode == "a" THEN
+			bill = THREE_MEALS_PER_DAY * days
+		ELSE
+			bill = BREAKFAST_INCLUDED * days
+		ENDIF
+	RETURN
+	
+	public string toString()
+	
+	
+	RETURN name + " You will stay wit us for " + days + " days and your code selection " + code + " results in total of " + bill
+
+ENDCLASS
